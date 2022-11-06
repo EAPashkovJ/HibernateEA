@@ -9,34 +9,40 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ClientDaoImpl implements ClientDao{
-
+public class ClientDaoImpl implements ClientDao {
 
     @Override
     public void save(Client client) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction  transaction = session.beginTransaction();
+        Transaction transaction = session.beginTransaction();
         session.save(client);
         transaction.commit();
         session.close();
     }
 
-
     @Override
     public void update(Client client) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.update(client);
+        Object persistentInstance = session.load(Client.class, (long) client.getPinCode());
+        if (persistentInstance != null) {
+            session.update(persistentInstance);
+        }
         transaction.commit();
         session.close();
     }
 
     @Override
-    public void delete(Client client) {
-    Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-    Transaction transaction = session.beginTransaction();
-    session.delete(client);
-    session.close();
+    public void delete(Long id) {
+
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        Object persistentInstance = session.load(Client.class, id);
+        if (persistentInstance != null) {
+            session.delete(persistentInstance);
+        }
+        transaction.commit();
+        session.close();
     }
 
     @SuppressWarnings("unchecked")

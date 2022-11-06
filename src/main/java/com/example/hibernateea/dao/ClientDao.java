@@ -8,12 +8,11 @@ import java.util.List;
 @Repository
 public interface ClientDao {
 
-
     void save(Client client);
 
     void update(Client client);
 
-    void delete(Client client);
+    void delete(Long id);
 
-    List <Client> findAll();
+    List<Client> findAll();
 }

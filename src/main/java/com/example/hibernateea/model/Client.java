@@ -1,20 +1,15 @@
 package com.example.hibernateea.model;
 
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "Client")
 public class Client {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String surname;
     private int cardNumber;
@@ -24,7 +19,7 @@ public class Client {
     public Client() {
     }
 
-    public Long id() {
+    public Long getId() {
         return id;
     }
 
@@ -59,6 +54,7 @@ public class Client {
     public void setPinCode(int pinCode) {
         this.pinCode = pinCode;
     }
+
     @Override
     public String toString() {
         return "Client{" +
