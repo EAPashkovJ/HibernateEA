@@ -1,6 +1,6 @@
 package com.example.hibernateea.dao;
 
-import com.example.hibernateea.component.HibernateSessionFactoryUtil;
+import com.example.hibernateea.configuration.HibernateSessionFactoryUtil;
 import com.example.hibernateea.model.Client;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

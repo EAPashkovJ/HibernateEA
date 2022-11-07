@@ -1,11 +1,9 @@
-package com.example.hibernateea.component;
+package com.example.hibernateea.configuration;
 
-import com.example.hibernateea.model.Client;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
 import org.springframework.context.annotation.Bean;
 
 
