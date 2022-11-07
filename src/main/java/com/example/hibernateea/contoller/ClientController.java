@@ -25,6 +25,17 @@ public class ClientController {
     }
 
     /**
+     * Find client by ID
+     *
+     * @param id id client for search
+     * @return Client
+     */
+    @GetMapping("/show/{id}")
+    public Client findById(@PathVariable Long id) {
+        return clientService.findById(id);
+    }
+
+    /**
      * Create new Client of Bank
      *
      * @param name       name
@@ -60,16 +71,7 @@ public class ClientController {
 
     }
 
-    /**
-     * Find client by ID
-     *
-     * @param id id client for search
-     * @return Client
-     */
-    @GetMapping("/show/{id}")
-    public Client findById(@PathVariable Long id) {
-        return clientService.findById(id);
-    }
+
 
 }
 

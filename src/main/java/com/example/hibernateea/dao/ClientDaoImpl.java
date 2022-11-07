@@ -24,10 +24,11 @@ public class ClientDaoImpl implements ClientDao {
     public void update(Client client) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        Object persistentInstance = session.load(Client.class, (long) client.getPinCode());
-        if (persistentInstance != null) {
-            session.update(persistentInstance);
-        }
+        // load cоздает proxy объект и тут то я с ним работаю
+        // я победил баг с обновлением пинкода, я молодец
+        Client persistentInstance = session.load(Client.class, client.getId());
+        persistentInstance.setPinCode(client.getPinCode());
+        session.update(persistentInstance);
         transaction.commit();
         session.close();
     }
