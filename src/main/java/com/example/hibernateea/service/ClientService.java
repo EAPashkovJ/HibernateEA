@@ -4,6 +4,7 @@ import com.example.hibernateea.dao.ClientDaoImpl;
 import com.example.hibernateea.model.Client;
 import org.springframework.stereotype.Service;
 
+import java.lang.management.ManagementFactory;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,6 +15,7 @@ public class ClientService {
     }
     private ClientDaoImpl clientDao = new ClientDaoImpl();
 
+
     public void saveClient(String name, String surname, int cardNumber, int pinCode) {
         Client client = new Client();
         client.setName(name);
@@ -21,6 +23,7 @@ public class ClientService {
         client.setCardNumber(cardNumber);
         client.setPinCode(pinCode);
         clientDao.save(client);
+
     }
 
     public void deleteClient(Long id) {

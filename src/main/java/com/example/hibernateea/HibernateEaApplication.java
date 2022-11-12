@@ -10,6 +10,6 @@ public class HibernateEaApplication {
     public static void main(String[] args) {
         SpringApplication.run(HibernateEaApplication.class, args);
 
-    }
 
+    }
 }
